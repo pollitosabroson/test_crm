@@ -1,0 +1,11 @@
+[flake8]
+exclude =
+    */static/*
+    */__pycache_/*
+    */migrations/*
+    .gitignore
+    .flake8
+    *.yaml
+    *.md
+    *.txt
+max-complexity = 10
