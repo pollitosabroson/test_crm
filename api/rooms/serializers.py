@@ -36,6 +36,7 @@ class CreateRoomSerializer(serializers.ModelSerializer):
         return values
 
     def create(self, validated_data):
+        """Override create in serializers'"""
         room = Room.objects.create(
             name=validated_data.get('name'),
             hotel_id=validated_data.get('hotel'),
