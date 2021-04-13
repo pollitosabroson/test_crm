@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+
+  # Postgres BD
+  postgres:
+    build: postgres/
+    environment:
+      - POSTGRES_USER=roiback
+      - POSTGRES_PASSWORD=mypass
+      - POSTGRES_DB=roiback_local
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+      - ./postgres/shared/:/data/shared
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - "5055:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    restart: unless-stopped
+
+  # API roiback
+  api:
+    build: python/
+    command: sh /scripts/run_web.sh
+    volumes:
+      - ../../api:/app
+      - ./python/scripts:/scripts
+    env_file:
+      - ./python/configs/.env
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8090:5560"
+
+  redis:
+    build: redis/
+    volumes:
+      - ./redis/data:/data
+      - ./redis/shared:/sharedfolder
+      - ./redis/config/redis.conf:/usr/local/etc/redis/redis.conf
