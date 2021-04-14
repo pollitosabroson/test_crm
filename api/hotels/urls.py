@@ -23,7 +23,7 @@ urlpatterns = [
                 'post': 'create'
             }
         ),
-        name='single_hotel'
+        name='list_create_rooms'
     ),
     re_path(
         r'^(?P<public_id>[\w\-]+)$',
