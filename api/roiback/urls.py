@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.urls import include, path, re_path
 
 apps_patterns = [
-    path('hotels/', include('hotels.urls')),
+    path('hotels/', include('hotels.urls'), name='hotels'),
     path('availability/', include('inventories.urls')),
 ]
 

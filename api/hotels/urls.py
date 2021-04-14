@@ -3,6 +3,7 @@ from rooms.views import RoomView
 
 from . import views
 
+app_name = 'hotels'
 urlpatterns = [
     re_path(
         r'^(?P<public_id>[\w\-]+)/rooms/(?P<room_id>[\w\-]+)$',
