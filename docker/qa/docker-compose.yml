@@ -8,7 +8,7 @@ services:
     environment:
       - POSTGRES_USER=roiback
       - POSTGRES_PASSWORD=mypass
-      - POSTGRES_DB=roiback_local
+      - POSTGRES_DB=roiback_qa
     volumes:
       - ./postgres/data:/var/lib/postgresql/data
       - ./postgres/shared/:/data/shared
