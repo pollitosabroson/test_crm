@@ -7,7 +7,7 @@ services:
     build: postgres/
     environment:
       - POSTGRES_USER=roiback
-      - POSTGRES_PASSWORD=mypass
+      - POSTGRES_PASSWORD=Kq"J:;S#q"8qU5{P
       - POSTGRES_DB=roiback_prod
     volumes:
       - ./postgres/data:/var/lib/postgresql/data
