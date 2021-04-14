@@ -25,16 +25,29 @@ class RoomView(ManySerialziersView, ModelViewSet):
 
     @staticmethod
     def base_value_not_found(field):
+        """base values from raise 404.
+        Args:
+            Args(field): name of field dont exists
+        Exception:
+            Raise: Not found
+        """
         raise NotFound(
             {field: 'Value not found'},
         )
 
     def valid_hotel(self, hotel_id):
+        """Valid if hotel exists.
+        Args:
+            hotel_id(str): Hotel Id
+        Return:
+            Dict: Dict with values from hotels
+        Exception:
+            Raise: Not found
+        """
         hotel = Hotel()
         instance = hotel.get_value_by_id(
-            self.kwargs.get('public_id')
+            hotel_id
         )
-
         if not instance:
             self.base_value_not_found(
                 'hotel'
